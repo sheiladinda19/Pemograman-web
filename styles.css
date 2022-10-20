@@ -1,0 +1,46 @@
+body {
+    font-family: sans-serif;
+    margin: 0px;
+    background-color: whitesmoke;
+}
+.Navbar {
+    background-color:teal;
+    display: flex;
+    padding: 16px;
+    color: white;
+}
+.Navbar__Items {
+    display:flex;
+}
+.Navbar__Link {
+    padding-right: 8px;
+}
+.Navbar__Link a {
+    text-decoration: none;
+    color: white;
+}
+.Navbar__Items--right {
+    margin-left:auto;
+}
+img {
+    width: 150px;
+}
+main {
+    display: flex;
+}
+mainSection {
+    margin: 10px 20px;
+}
+sideSection {
+    width: 30%;
+    margin: 25px 10px;
+}
+footer div {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    background-color:teal;
+}
