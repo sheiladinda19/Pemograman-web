@@ -1,3 +1,4 @@
+
 body {
     font-family: sans-serif;
     margin: 0px;
@@ -6,34 +7,44 @@ body {
 .Navbar {
     background-color:teal;
     display: flex;
-    padding: 16px;
-    color: white;
+    padding: 20px;
+    color: whitesmoke;
 }
 .Navbar__Items {
-    display:flex;
+    display: flex;
+}
+.Navbar__Items div:hover, .Navbar__Items a:hover {
+    color: black;
 }
 .Navbar__Link {
-    padding-right: 8px;
+    padding-right: 12px;
 }
 .Navbar__Link a {
     text-decoration: none;
-    color: white;
+    color: whitesmoke;
+
 }
 .Navbar__Items--right {
     margin-left:auto;
 }
-img {
-    width: 150px;
+h1 {
+    color: teal;
 }
 main {
-    display: flex;
+    margin: 10px;
+    padding-bottom: 10px;
 }
-mainSection {
-    margin: 10px 20px;
+sideSection section, mainSection {
+    box-shadow: 0 5px 0px 0px #f5f5f5, 0 -5px 0px 0px #f5f5f5, 5px 0 10px -5px rgba(0, 0, 0, 0.4), -5px 0 10px -5px rgba(0, 0, 0, 0.4);
+    padding: 3px;
+    box-sizing: border-box;
+    
 }
-sideSection {
-    width: 30%;
-    margin: 25px 10px;
+sideSection h1 {
+    text-align: center;
+}
+img {
+    width: 150px;
 }
 footer div {
     position: fixed;
@@ -43,4 +54,24 @@ footer div {
     color: white;
     text-align: center;
     background-color:teal;
+}
+button {
+    color: whitesmoke;
+    background-color: teal;
+    border: teal;
+}
+@media screen and (min-width: 480px){
+    main {
+        display: flex;
+    }
+    mainSection {
+        flex: 2;
+        margin: 10px;
+        padding: 5px;
+    }
+    sideSection {
+        flex: 1;
+        margin: 10px;
+        padding: 5px;
+    }
 }
