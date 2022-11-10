@@ -1,13 +1,27 @@
 <?php
-    $barang = array (
-        array("Tepung", 1, 20),
-        array("Gula", 5, 25),
-        array("Pisang", 2, 30),
-        array("Terigu", 1, 20),
-        array("Mantan", 1, 0),
-    );
-?>
+require ("barang.php");
 
+$beras = new Barang('beras', 1, 10);
+$telur = new Barang('telur', 0.2, 20);
+$gula = new Barang('gula', 0, 0);
+$minyak = new Barang('minyak', 0.5, 5);
+$susu = new Barang('susu', 1, 10);
+$mie = new Barang('mie', 0.5, 10);
+$seluruhBarang = [$beras, $telur, $gula, $minyak, $susu, $mie];
+
+if(!empty($_POST)){
+    $nama=$_POST["nama"];
+    $berat=$_POST["berat"];
+    $stok=$_POST["stok"];
+    $name = $nama;
+    $name = new Barang($nama, $berat, $stok);
+    array_push($seluruhBarang, $name);
+}else{
+    $nama=null;
+    $berat=null;
+    $stok=null;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,21 +41,15 @@
 </head>
 <body>
     <div>
-        <form action="">
-            <input type="submit" name="sortingBerat" value="sortingBerat" onclick="sortingBerat()" />
-            <input type="submit" name="sortingNama" value="sortingNama" onclick="sortingNama()" />
+        <form action="" method="post">
+            <label for="nama">Nama Barang:</label><br>
+            <input type="text" id="nama" name="nama" required><br>
+            <label for="berat">Berat Barang:</label><br>
+            <input type="number" id="berat" name="berat" required placeholder="berat dalam KG"><br>
+            <label for="stok">Stok Barang:</label><br>
+            <input type="number" id="stok" name="stok" required><br>
+            <input type="submit">
         </form>
-
-        <?php
-            function sortingBerat(){
-                foreach ($barang as $nama){
-                    asort($nama);
-                }
-            }
-            function sortingNama(){
-                echo "The insert function is called.";
-            }
-        ?>
     </div>
     <div>
         <h1>KONVERSI BARANG SHEISHEI</h1>
@@ -56,16 +64,16 @@
                 <th>Berat (mg)</th>
                 <th>Stok</th>
             </tr>
-            <?php for($i = 0; $i < 5; $i++) : ?>
-            <tr style="<?= $barang[$i][2] == 0 ? 'background-color: red;' : '' ?>">
-                <td><?= $i+1; ?></td>
-                <td><?= $barang[$i][0]; ?></td>
-                <td><?= $barang[$i][1]; ?></td>
-                <td><?= $barang[$i][1]*1000; ?></td>
-                <td><?= $barang[$i][1]*1000000; ?></td>
-                <td><?= $barang[$i][2]; ?></td>
+            <?php foreach ($seluruhBarang as $key=>$barang ): ?>
+            <tr style="<?= $barang->getStok() == 0 ? 'background-color: red;' : '' ?>">
+                <td><?= $key+1; ?></td>
+                <td><?= $barang->getNama(); ?></td>
+                <td><?= $barang->getBerat(); ?></td>
+                <td><?= $barang->convertBeratG($barang->getBerat()); ?></td>
+                <td><?= $barang->convertBeratMG($barang->getBerat()); ?></td>
+                <td><?= $barang->getStok(); ?></td>
             </tr>
-            <?php endfor ?>
+            <?php endforeach ?>
         </table>
     </div>
 </body>
